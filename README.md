@@ -1,7 +1,7 @@
 # Drive-n-Grub
 ## When Creating Repository please use file path C:/SeniorProject
 ## ------------ How to submit Changes to Git Hub -------------------
-
+*Make A New Branch For Every Task You Are Working*
 * Step 0: DO NOT COMMIT ANY CODE CHANGES THAT HAVE ERRORS
 * Step 1: Create a Branch in GitHub
 *   1a: Do this by click on the drop down(defaults to main) in the code tab
