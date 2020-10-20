@@ -12,7 +12,7 @@
   * note: If you have never used github run these to identify yourself
     * git config --global user.email "you@example.com"
     * git config --global user.name "Your Name"
-  * Step 4a: run this --command git add . --
+  * Step 4a: run this command  --git add . --
   * Step 4b: Next,  run this command --git commit -m "*Put Commit Message Here*"
   * Step 4c: Finally, run this --git push origin *ENTER BRANCH NAME HERE* --
 * Step 5: Go Back To gitHub you should see that it prompts you to create a pull request, do so.
