@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {}
+    "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {
+    "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+        "projectPath": "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\codyj\\.nuget\\packages\\",
-        "outputPath": "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\obj\\",
+        "outputPath": "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\codyj\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,26 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
