@@ -20,7 +20,7 @@ export class WelcomePageComponent implements OnInit {
 
     }
 
-    CustomerLogin(e:any){
+    CustomerLogin(){
       this.http.get('http://localhost:5000/api/customers/GetByEmailAndPassword/' + this.email + '/' + this.passWord).subscribe(x => {
         this.customer = x;
         if(this.customer != 'undefined')
@@ -31,23 +31,18 @@ export class WelcomePageComponent implements OnInit {
       });
     }
 
-    BusinessLogin(e:any){
-      this.http.get('http://localhost:5000/api/business/GetByEmailAndPassword/' + this.email + '/' + this.passWord).subscribe(x => {
-        this.business = x;
-        if(this.business != 'undefined')
-        {
-          //Got to Next Page
-          this.nav.navigate('BusinessPage/' + this.business.businessId)
-        }
-      }); 
+    BusinessLogin(){
+      //Got to Next Page
+      this.nav.navigate('BusinessPage/')
+ 
     }
 
-    GuestLogin(e:any){
+    GuestLogin(){
       //Got to Next Page
       this.nav.navigate('GuestPage')
     }
 
-    SignUp(e:any){
+    SignUp(){
       //Got to Next Page
       this.nav.navigate('SignUpPage')
     }
