@@ -26,25 +26,25 @@ export class WelcomePageComponent implements OnInit {
         if(this.customer != 'undefined')
         {
           //Got to Next Page
-          this.nav.navigate('OrderMenu/' + this.customer.customerId)
+          this.nav.navigate('orderMenu/' + this.customer.customerId)
         }
       });
     }
 
     BusinessLogin(){
       //Got to Next Page
-      this.nav.navigate('BusinessPage/')
+      this.nav.navigate('businessLogin')
  
     }
 
     GuestLogin(){
       //Got to Next Page
-      this.nav.navigate('GuestPage')
+      this.nav.navigate('guestPage')
     }
 
     SignUp(){
       //Got to Next Page
-      this.nav.navigate('SignUpPage')
+      this.nav.navigate('signUpPage')
     }
 
 }
