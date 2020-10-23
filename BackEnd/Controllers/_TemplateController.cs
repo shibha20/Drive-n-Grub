@@ -24,9 +24,9 @@ namespace SampleProject.Controllers
                 [HttpGet]
         public ActionResult <IEnumerable<ClassNameReadDto>> GetAllClassName()
         {
-            using(PointOfSaleContext pointOfSaleContext = PointOfSaleContext.CreateContext())
+            using(BackEndContext backEndContext = BackEndContext.CreateContext())
             {
-                return Ok(_mapper.Map<IEnumerable<ClassNameReadDto>>(_repo.GetAllClassNames(pointOfSaleContext)));
+                return Ok(_mapper.Map<IEnumerable<ClassNameReadDto>>(_repo.GetAllClassNames(backEndContext)));
             }
         }
 
@@ -34,9 +34,9 @@ namespace SampleProject.Controllers
         [HttpGet("{classNameId}")]
         public ActionResult <ClassNameReadDto> GetClassNameById(long classNameId)
         {
-            using(PointOfSaleContext pointOfSaleContext = PointOfSaleContext.CreateContext())
+            using(BackEndContext backEndContext = BackEndContext.CreateContext())
             {
-                var className = _repo.GetClassNameById(pointOfSaleContext, classNameId);
+                var className = _repo.GetClassNameById(backEndContext, classNameId);
                 if(className != null)
                 {
                     return Ok(_mapper.Map<ClassNameReadDto>(className));
@@ -50,27 +50,27 @@ namespace SampleProject.Controllers
         [HttpPost]
         public ActionResult <ClassNameReadDto> CreateNewClassName([FromBody] ClassName className)
         {
-            using(PointOfSaleContext pointOfSaleContext = PointOfSaleContext.CreateContext())
+            using(BackEndContext backEndContext = BackEndContext.CreateContext())
             {
-                return _mapper.Map<ClassNameReadDto>(_repo.CreateNewClassName(pointOfSaleContext, className));
+                return _mapper.Map<ClassNameReadDto>(_repo.CreateNewClassName(backEndContext, className));
             }
         }
 
         [HttpPut]
         public ActionResult <ClassNameReadDto> UpdateClassName([FromBody] ClassName className)
         {            
-            using(PointOfSaleContext pointOfSaleContext = PointOfSaleContext.CreateContext())
+            using(BackEndContext backEndContext = BackEndContext.CreateContext())
             {
-                return _mapper.Map<ClassNameReadDto>(_repo.UpdateClassName(pointOfSaleContext,className));
+                return _mapper.Map<ClassNameReadDto>(_repo.UpdateClassName(backEndContext,className));
             }
         }
 
         [HttpDelete("{classNameId}")]
         public ActionResult <bool> DeleteClassNameById(long classNameId)
         {
-            using(PointOfSaleContext pointOfSaleContext = PointOfSaleContext.CreateContext())
+            using(BackEndContext backEndContext = BackEndContext.CreateContext())
             {
-                return _repo.DeleteClassName(pointOfSaleContext, classNameId);
+                return _repo.DeleteClassName(backEndContext, classNameId);
             }
         }
         */

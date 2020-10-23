@@ -25,16 +25,57 @@ namespace BackEnd.Data
             return dbContext;
         }
         
-        //public DbSet<TableName> TableNamePluralized { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<ItemType> ItemTypes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Size> Sizes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             AddGlobalFilters(modelBuilder);
-            // modelBuilder.Entity<TableName>(entity =>
-            // {
-            //     entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-            //     entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-            //     entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
-            // });
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+            });
+
+            modelBuilder.Entity<Item>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+            });
+
+            modelBuilder.Entity<ItemType>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+            });
+
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+            });
+
+            modelBuilder.Entity<OrderItem>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+            });
+
+
+            modelBuilder.Entity<Size>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+            });
 
         }
 
