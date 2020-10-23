@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
+using BackEnd.Data;
+using BackEnd.Data.Services;
 
 namespace BackEnd
 {
@@ -27,10 +29,17 @@ namespace BackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<BackEndContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("BackEndConnection")));
+            services.AddDbContext<BackEndContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("BackEndConnection")));
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //services.AddScoped<ClassNameInterface, ClassNameService>();
+            services.AddScoped<CustomerInterface, CustomerService>();
+            services.AddScoped<ItemInterface, ItemService>();
+            services.AddScoped<ItemTypeInterface, ItemTypeService>();
+            services.AddScoped<OrderInterface, OrderService>();
+            services.AddScoped<OrderItemInterface, OrderItemService>();
+            services.AddScoped<SizeInterface, SizeService>();
+            //services.AddScoped<ClassNameInterface, ClassNameSer
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

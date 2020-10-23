@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {}
+    "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {
+    "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\codyj\\.nuget\\packages\\",
-        "outputPath": "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\obj\\",
+        "outputPath": "C:\\SeniorProject\\Drive-n-Grub\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\codyj\\AppData\\Roaming\\NuGet\\NuGet.Config",
