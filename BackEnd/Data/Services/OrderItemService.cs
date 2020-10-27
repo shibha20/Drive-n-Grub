@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using BackEnd.Dtos;
 using BackEnd.Models;
+using BackEnd.Data;
 
 namespace BackEnd.Data.Services
 {
@@ -11,35 +14,50 @@ namespace BackEnd.Data.Services
         {
             _db = db;
         }
-        public IEnumerable<OrderItem> GetAllOrderItems(BackEndContext backEnd)
+        public IEnumerable<OrderItem> GetAllOrderItems()
         {
             return _db.OrderItems.ToList();
         }
 
-        public OrderItem GetOrderItemById(BackEndContext backEnd, long orderItemId)
+        public OrderItem GetOrderItemById(long orderItemId)
         {
             return _db.OrderItems.FirstOrDefault(x => x.OrderItemId == orderItemId);
         }
 
-        public OrderItem CreateNewOrderItem(BackEndContext backEnd,OrderItem orderItem)
+        public OrderItem CreateNewOrderItem(OrderItemReadDto orderItem)
         {
-            backEnd.OrderItems.Add(orderItem);
-            backEnd.SaveChanges();
-            return GetOrderItemById(backEnd, orderItem.OrderItemId);
+            var newOrderItem = new OrderItem{
+                UserEntered = "Create OrderItem",
+                DateEntered = DateTime.Now
+            };
+            _db.OrderItems.Add(newOrderItem);
+            _db.SaveChanges();
+            orderItem.OrderItemId = newOrderItem.OrderItemId;
+            return GetOrderItemById(orderItem.OrderItemId);
         }
 
-        public OrderItem UpdateOrderItem(BackEndContext backEnd, OrderItem orderItem)
+        public OrderItem UpdateOrderItem(OrderItemReadDto orderItem)
         {
-            backEnd.OrderItems.Add(orderItem);
-            backEnd.SaveChanges();
-            return GetOrderItemById(backEnd, orderItem.OrderItemId);
+            if(orderItem.OrderItemId == 0)
+            {
+                CreateNewOrderItem(orderItem);
+            }
+            else{
+                var updateOrderItem = new OrderItem{
+                    UserModified = "Update OrderItem",
+                    DateModified = DateTime.Now
+                };
+                _db.OrderItems.Add(updateOrderItem);
+                _db.SaveChanges();
+            }
+            return GetOrderItemById(orderItem.OrderItemId);
         }
 
-        public bool DeleteOrderItem(BackEndContext backEnd, long orderItemId)
+        public bool DeleteOrderItem(long orderItemId)
         {
-            OrderItem orderItem = GetOrderItemById(backEnd, orderItemId);
-            backEnd.OrderItems.Remove(orderItem);
-            backEnd.SaveChanges();
+            OrderItem orderItem = GetOrderItemById(orderItemId);
+            _db.OrderItems.Remove(orderItem);
+            _db.SaveChanges();
             return true;
         }
     }

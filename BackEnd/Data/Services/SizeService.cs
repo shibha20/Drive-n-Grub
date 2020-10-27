@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using BackEnd.Dtos;
 using BackEnd.Models;
+using BackEnd.Data;
 
 namespace BackEnd.Data.Services
 {
@@ -11,35 +14,50 @@ namespace BackEnd.Data.Services
         {
             _db = db;
         }
-        public IEnumerable<Size> GetAllSizes(BackEndContext backEnd)
+        public IEnumerable<Size> GetAllSizes()
         {
             return _db.Sizes.ToList();
         }
 
-        public Size GetSizeById(BackEndContext backEnd, long sizeId)
+        public Size GetSizeById(long sizeId)
         {
             return _db.Sizes.FirstOrDefault(x => x.SizeId == sizeId);
         }
 
-        public Size CreateNewSize(BackEndContext backEnd,Size size)
+        public Size CreateNewSize(SizeReadDto size)
         {
-            backEnd.Sizes.Add(size);
-            backEnd.SaveChanges();
-            return GetSizeById(backEnd, size.SizeId);
+            var newSize = new Size{
+                UserEntered = "Create Size",
+                DateEntered = DateTime.Now
+            };
+            _db.Sizes.Add(newSize);
+            _db.SaveChanges();
+            size.SizeId = newSize.SizeId;
+            return GetSizeById(size.SizeId);
         }
 
-        public Size UpdateSize(BackEndContext backEnd, Size size)
+        public Size UpdateSize(SizeReadDto size)
         {
-            backEnd.Sizes.Add(size);
-            backEnd.SaveChanges();
-            return GetSizeById(backEnd, size.SizeId);
+            if(size.SizeId == 0)
+            {
+                CreateNewSize(size);
+            }
+            else{
+                var updateSize = new Size{
+                    UserModified = "Update Size",
+                    DateModified = DateTime.Now
+                };
+                _db.Sizes.Add(updateSize);
+                _db.SaveChanges();
+            }
+            return GetSizeById(size.SizeId);
         }
 
-        public bool DeleteSize(BackEndContext backEnd, long sizeId)
+        public bool DeleteSize(long sizeId)
         {
-            Size size = GetSizeById(backEnd, sizeId);
-            backEnd.Sizes.Remove(size);
-            backEnd.SaveChanges();
+            Size size = GetSizeById(sizeId);
+            _db.Sizes.Remove(size);
+            _db.SaveChanges();
             return true;
         }
     }

@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as Services from './services';
 
 import { WelcomePageComponent } from './welcome/welcome-page.component';
+import {ModalModule } from 'ngb-modal';
 
 
 @NgModule({
@@ -39,6 +40,8 @@ import { WelcomePageComponent } from './welcome/welcome-page.component';
     MatCardModule,
     
     HttpClientModule,
+
+    ModalModule
   ],
   providers: [Services.NavigationService],
   bootstrap: [AppComponent]

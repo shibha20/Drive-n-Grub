@@ -1,15 +1,16 @@
 using System.Collections.Generic;
+using BackEnd.Dtos;
 using BackEnd.Models;
 
 namespace BackEnd.Data
 {
     public interface ItemInterface
     {
-        IEnumerable<Item> GetAllItems(BackEndContext backEndContext);
-        Item GetItemById(BackEndContext backEndContext, long itemId);
-        Item CreateNewItem(BackEndContext backEndContext,Item item);
-        Item UpdateItem(BackEndContext backEndContext, Item item);
-        bool DeleteItem(BackEndContext backEndContext, long itemId);
-        IEnumerable<Item> GetItemByItemTypeId(BackEndContext backEndContext, long itemTypeId);
+        IEnumerable<Item> GetAllItems();
+        Item GetItemById(long itemId);
+        Item CreateNewItem(ItemReadDto item);
+        Item UpdateItem(ItemReadDto item);
+        bool DeleteItem(long itemId);
+        IEnumerable<Item> GetItemByItemTypeId(long itemTypeId);
     }
 }

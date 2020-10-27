@@ -24,64 +24,39 @@ namespace Backend.Controllers
         [HttpGet]
         public ActionResult <IEnumerable<ItemReadDto>> GetAllItem()
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return Ok(_mapper.Map<IEnumerable<ItemReadDto>>(_repo.GetAllItems(backEndContext)));
-            }
+            return Ok(_mapper.Map<IEnumerable<ItemReadDto>>(_repo.GetAllItems()));
         }
 
         //Get api/Items/{itemId}
         [HttpGet("{itemId}")]
         public ActionResult <ItemReadDto> GetItemById(long itemId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
+            var item = _repo.GetItemById(itemId);
+            if(item != null)
             {
-                var item = _repo.GetItemById(backEndContext, itemId);
-                if(item != null)
-                {
-                    return Ok(_mapper.Map<ItemReadDto>(item));
-                }
-                else{
-                    return NotFound();
-                }
+                return Ok(_mapper.Map<ItemReadDto>(item));
             }
-        }
-
-        //Get api/Items/GetItemByItemTypeId/{itemTypeId}
-        [HttpGet("GetItemByItemTypeId/{itemTypeId}")]
-        public ActionResult <IEnumerable<ItemReadDto>> GetItemByItemTypeId(long itemTypeId)
-        {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return Ok(_mapper.Map<IEnumerable<ItemReadDto>>(_repo.GetItemByItemTypeId(backEndContext, itemTypeId)));
+            else{
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public ActionResult <ItemReadDto> CreateNewItem([FromBody] Item item)
+        public ActionResult <ItemReadDto> CreateNewItem([FromBody] ItemReadDto item)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<ItemReadDto>(_repo.CreateNewItem(backEndContext, item));
-            }
+            return _mapper.Map<ItemReadDto>(_repo.CreateNewItem(item));
         }
 
         [HttpPut]
-        public ActionResult <ItemReadDto> UpdateItem([FromBody] Item item)
+        public ActionResult <ItemReadDto> UpdateItem([FromBody] ItemReadDto item)
         {            
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<ItemReadDto>(_repo.UpdateItem(backEndContext,item));
-            }
+            return _mapper.Map<ItemReadDto>(_repo.UpdateItem(item));
         }
 
         [HttpDelete("{itemId}")]
         public ActionResult <bool> DeleteItemById(long itemId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _repo.DeleteItem(backEndContext, itemId);
-            }
+            return _repo.DeleteItem(itemId);
         }
     }
 }
