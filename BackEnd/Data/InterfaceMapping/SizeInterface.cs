@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using BackEnd.Dtos;
 using BackEnd.Models;
 
 namespace BackEnd.Data
 {
     public interface SizeInterface
     {
-        IEnumerable<Size> GetAllSizes(BackEndContext backEndContext);
-        Size GetSizeById(BackEndContext backEndContext, long sizeId);
-        Size CreateNewSize(BackEndContext backEndContext,Size size);
-        Size UpdateSize(BackEndContext backEndContext, Size size);
-        bool DeleteSize(BackEndContext backEndContext, long sizeId);
+        IEnumerable<Size> GetAllSizes();
+        Size GetSizeById(long sizeId);
+        Size CreateNewSize(SizeReadDto size);
+        Size UpdateSize(SizeReadDto size);
+        bool DeleteSize(long sizeId);
     }
 }

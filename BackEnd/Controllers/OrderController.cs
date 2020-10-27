@@ -21,57 +21,42 @@ namespace Backend.Controllers
             _mapper = mapper;
         }
 
-                [HttpGet]
+        [HttpGet]
         public ActionResult <IEnumerable<OrderReadDto>> GetAllOrder()
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return Ok(_mapper.Map<IEnumerable<OrderReadDto>>(_repo.GetAllOrders(backEndContext)));
-            }
+            return Ok(_mapper.Map<IEnumerable<OrderReadDto>>(_repo.GetAllOrders()));
         }
 
         //Get api/Orders/{orderId}
         [HttpGet("{orderId}")]
         public ActionResult <OrderReadDto> GetOrderById(long orderId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
+            var order = _repo.GetOrderById(orderId);
+            if(order != null)
             {
-                var order = _repo.GetOrderById(backEndContext, orderId);
-                if(order != null)
-                {
-                    return Ok(_mapper.Map<OrderReadDto>(order));
-                }
-                else{
-                    return NotFound();
-                }
+                return Ok(_mapper.Map<OrderReadDto>(order));
+            }
+            else{
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public ActionResult <OrderReadDto> CreateNewOrder([FromBody] Order order)
+        public ActionResult <OrderReadDto> CreateNewOrder([FromBody] OrderReadDto order)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<OrderReadDto>(_repo.CreateNewOrder(backEndContext, order));
-            }
+            return _mapper.Map<OrderReadDto>(_repo.CreateNewOrder(order));
         }
 
         [HttpPut]
-        public ActionResult <OrderReadDto> UpdateOrder([FromBody] Order order)
+        public ActionResult <OrderReadDto> UpdateOrder([FromBody] OrderReadDto order)
         {            
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<OrderReadDto>(_repo.UpdateOrder(backEndContext,order));
-            }
+            return _mapper.Map<OrderReadDto>(_repo.UpdateOrder(order));
         }
 
         [HttpDelete("{orderId}")]
         public ActionResult <bool> DeleteOrderById(long orderId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _repo.DeleteOrder(backEndContext, orderId);
-            }
+            return _repo.DeleteOrder(orderId);
         }
     }
 }

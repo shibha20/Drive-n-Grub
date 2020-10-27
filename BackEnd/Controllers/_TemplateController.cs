@@ -21,57 +21,42 @@ namespace SampleProject.Controllers
             _mapper = mapper;
         }
 
-                [HttpGet]
+        [HttpGet]
         public ActionResult <IEnumerable<ClassNameReadDto>> GetAllClassName()
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return Ok(_mapper.Map<IEnumerable<ClassNameReadDto>>(_repo.GetAllClassNames(backEndContext)));
-            }
+            return Ok(_mapper.Map<IEnumerable<ClassNameReadDto>>(_repo.GetAllClassNames()));
         }
 
         //Get api/ClassNames/{classNameId}
         [HttpGet("{classNameId}")]
         public ActionResult <ClassNameReadDto> GetClassNameById(long classNameId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
+            var className = _repo.GetClassNameById(classNameId);
+            if(className != null)
             {
-                var className = _repo.GetClassNameById(backEndContext, classNameId);
-                if(className != null)
-                {
-                    return Ok(_mapper.Map<ClassNameReadDto>(className));
-                }
-                else{
-                    return NotFound();
-                }
+                return Ok(_mapper.Map<ClassNameReadDto>(className));
+            }
+            else{
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public ActionResult <ClassNameReadDto> CreateNewClassName([FromBody] ClassName className)
+        public ActionResult <ClassNameReadDto> CreateNewClassName([FromBody] ClassNameReadDto className)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<ClassNameReadDto>(_repo.CreateNewClassName(backEndContext, className));
-            }
+            return _mapper.Map<ClassNameReadDto>(_repo.CreateNewClassName(className));
         }
 
         [HttpPut]
-        public ActionResult <ClassNameReadDto> UpdateClassName([FromBody] ClassName className)
+        public ActionResult <ClassNameReadDto> UpdateClassName([FromBody] ClassNameReadDto className)
         {            
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<ClassNameReadDto>(_repo.UpdateClassName(backEndContext,className));
-            }
+            return _mapper.Map<ClassNameReadDto>(_repo.UpdateClassName(className));
         }
 
         [HttpDelete("{classNameId}")]
         public ActionResult <bool> DeleteClassNameById(long classNameId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _repo.DeleteClassName(backEndContext, classNameId);
-            }
+            return _repo.DeleteClassName(classNameId);
         }
         */
     }

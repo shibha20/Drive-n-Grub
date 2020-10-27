@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 
 namespace BackEnd.Models
 {
     public class Item
-    {               
+    {          
+        public Item()
+        {
+            this.OrderItems = new HashSet<OrderItem>();
+        }      
         public long ItemId { get; set; }
         public long? SizeId { get; set; }
         public long ItemTypeId { get; set; }
@@ -18,6 +23,7 @@ namespace BackEnd.Models
 
         public virtual Size Size { get; set; }
         public virtual ItemType ItemType { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
 
     }
 }

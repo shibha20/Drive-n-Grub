@@ -61,3 +61,5 @@ C:\SeniorProject\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.RazorTarge
 C:\SeniorProject\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.csproj.CopyComplete
 C:\SeniorProject\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.dll
 C:\SeniorProject\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.pdb
+C:\SeniorProject\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.csproj.CoreCompileInputs.cache
+C:\SeniorProject\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.genruntimeconfig.cache

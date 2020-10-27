@@ -23,55 +23,39 @@ namespace Backend.Controllers
         [HttpGet]
         public ActionResult <IEnumerable<ItemTypeReadDto>> GetAllItemType()
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                var itemTypes = _repo.GetAllItemTypes(backEndContext);
-                return Ok(_mapper.Map<IEnumerable<ItemTypeReadDto>>(itemTypes));
-            }
+            return Ok(_mapper.Map<IEnumerable<ItemTypeReadDto>>(_repo.GetAllItemTypes()));
         }
 
         //Get api/ItemTypes/{itemTypeId}
         [HttpGet("{itemTypeId}")]
         public ActionResult <ItemTypeReadDto> GetItemTypeById(long itemTypeId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
+            var itemType = _repo.GetItemTypeById(itemTypeId);
+            if(itemType != null)
             {
-                var itemType = _repo.GetItemTypeById(backEndContext, itemTypeId);
-                if(itemType != null)
-                {
-                    return Ok(_mapper.Map<ItemTypeReadDto>(itemType));
-                }
-                else{
-                    return NotFound();
-                }
+                return Ok(_mapper.Map<ItemTypeReadDto>(itemType));
+            }
+            else{
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public ActionResult <ItemTypeReadDto> CreateNewItemType([FromBody] ItemType itemType)
+        public ActionResult <ItemTypeReadDto> CreateNewItemType([FromBody] ItemTypeReadDto itemType)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<ItemTypeReadDto>(_repo.CreateNewItemType(backEndContext, itemType));
-            }
+            return _mapper.Map<ItemTypeReadDto>(_repo.CreateNewItemType(itemType));
         }
 
         [HttpPut]
-        public ActionResult <ItemTypeReadDto> UpdateItemType([FromBody] ItemType itemType)
+        public ActionResult <ItemTypeReadDto> UpdateItemType([FromBody] ItemTypeReadDto itemType)
         {            
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<ItemTypeReadDto>(_repo.UpdateItemType(backEndContext,itemType));
-            }
+            return _mapper.Map<ItemTypeReadDto>(_repo.UpdateItemType(itemType));
         }
 
         [HttpDelete("{itemTypeId}")]
         public ActionResult <bool> DeleteItemTypeById(long itemTypeId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _repo.DeleteItemType(backEndContext, itemTypeId);
-            }
+            return _repo.DeleteItemType(itemTypeId);
         }
     }
 }

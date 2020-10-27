@@ -4,7 +4,11 @@ using System.Collections.Generic;
 namespace BackEnd.Models
 {
     public class Customer
-    {              
+    {         
+        public Customer()
+        {
+            this.Orders = new HashSet<Order>();
+        }     
         public long CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }
@@ -17,6 +21,7 @@ namespace BackEnd.Models
         public string UserModified { get; set; }
         public DateTime? DateDeleted { get; set; }
         public string UserDeleted { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
     }
 
