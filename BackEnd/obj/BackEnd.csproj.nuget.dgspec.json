@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
         "projectPath": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
-        "packagesPath": "C:\\SoftwareEngineering\\.nuget\\packages\\",
+        "packagesPath": "C:\\SoftwareEngineering\\Profect\\Drvie-n-Grub\\.nuget\\packages\\",
         "outputPath": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
@@ -41,14 +41,6 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.1, )"
-            },
-            "Microsoft.AspNet.Mvc": {
-              "target": "Package",
-              "version": "[5.2.7, )"
-            },
-            "Microsoft.AspNet.WebApi.Core": {
-              "target": "Package",
-              "version": "[5.2.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
