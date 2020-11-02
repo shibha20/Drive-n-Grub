@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\SoftwareEngineering\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\SoftwareEngineering\\.nuget\\packages"
+      "C:\\SoftwareEngineering\\Profect\\Drvie-n-Grub\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\SoftwareEngineering\\Profect\\Drvie-n-Grub\\.nuget\\packages"
     ]
   }
 }
