@@ -47,5 +47,15 @@ namespace BackEnd.Data.Services
         {
             return _db.Customers.FirstOrDefault(x => x.CustomerEmail == email && x.CustomerPassword == password);
         }
+
+        public bool ValidateCustomer(string email)
+        {
+            Customer customer = _db.Customers.FirstOrDefault(x => x.CustomerEmail == email);
+            if(customer!=null)
+            {
+                return true;
+            }
+            return false;        
+        }
     }
 }

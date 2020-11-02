@@ -11,5 +11,6 @@ namespace BackEnd.Data
         Customer CreateNewCustomer(BackEndContext backEndContext,Customer customer);
         Customer UpdateCustomer(BackEndContext backEndContext, Customer customer);
         bool DeleteCustomer(BackEndContext backEndContext, long customerId);
+        bool ValidateCustomer(string email);
     }
 }

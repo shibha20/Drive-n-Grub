@@ -90,5 +90,11 @@ namespace Backend.Controllers
                 }
             }
         }
+
+        [HttpGet("ValidateCustomer/{email}")]
+        public ActionResult <bool> ValidateCustomer(string email)
+        {
+           return _repo.ValidateCustomer(email);
+        }
     }
 }

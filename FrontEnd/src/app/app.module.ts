@@ -14,12 +14,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as Services from './services';
 
 import { WelcomePageComponent } from './welcome/welcome-page.component';
+import { SignUpPageComponent } from './signup/signup-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    SignUpPageComponent
   ],
   imports: [
     BrowserModule,
