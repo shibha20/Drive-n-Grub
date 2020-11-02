@@ -7492,7 +7492,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\codyj\\.nuget\\packages\\": {}
+    "C:\\SoftwareEngineering\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7500,11 +7500,11 @@
       "projectUniqueName": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
       "projectName": "BackEnd",
       "projectPath": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
-      "packagesPath": "C:\\Users\\codyj\\.nuget\\packages\\",
+      "packagesPath": "C:\\SoftwareEngineering\\.nuget\\packages\\",
       "outputPath": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\codyj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\SoftwareEngineering\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
