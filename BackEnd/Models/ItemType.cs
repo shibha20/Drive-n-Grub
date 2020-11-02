@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 
 namespace BackEnd.Models
 {
     public class ItemType
     {    
+        public ItemType()
+        {
+            this.Items = new HashSet<Item>();
+        }
         public long ItemTypeId { get; set; }           
         public string ItemTypeName { get; set; }
         public DateTime DateEntered { get; set; }
@@ -12,6 +17,7 @@ namespace BackEnd.Models
         public string UserModified { get; set; }
         public DateTime? DateDeleted { get; set; }
         public string UserDeleted { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
 
     }
 }

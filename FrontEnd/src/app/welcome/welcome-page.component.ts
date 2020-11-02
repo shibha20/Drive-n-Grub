@@ -21,7 +21,7 @@ export class WelcomePageComponent implements OnInit {
     }
 
     CustomerLogin(){
-      this.http.get('http://localhost:5000/api/customers/GetByEmailAndPassword/' + this.email + '/' + this.passWord).subscribe(x => {
+      this.http.get('http://localhost:5000/api/customers', this.customer).subscribe(x => {
         this.customer = x;
         if(this.customer != 'undefined')
         {

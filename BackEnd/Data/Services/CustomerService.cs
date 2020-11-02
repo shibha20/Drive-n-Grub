@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using BackEnd.Dtos;
 using BackEnd.Models;
 
 namespace BackEnd.Data.Services
@@ -11,39 +13,64 @@ namespace BackEnd.Data.Services
         {
             _db = db;
         }
-        public IEnumerable<Customer> GetAllCustomers(BackEndContext backEnd)
+        public IEnumerable<Customer> GetAllCustomers()
         {
             return _db.Customers.ToList();
         }
 
-        public Customer GetCustomerById(BackEndContext backEnd, long customerId)
+        public Customer GetCustomerById( long customerId)
         {
             return _db.Customers.FirstOrDefault(x => x.CustomerId == customerId);
         }
 
-        public Customer CreateNewCustomer(BackEndContext backEnd,Customer customer)
+        public Customer CreateNewCustomer(CustomerReadDto customer)
         {
-            backEnd.Customers.Add(customer);
-            backEnd.SaveChanges();
-            return GetCustomerById(backEnd, customer.CustomerId);
+            var newCustomer = new Customer{
+                CustomerName = customer.CustomerName,
+                PhoneNumber = customer.PhoneNumber,
+                CustomerEmail = customer.CustomerEmail,
+                CustomerPassword = customer.CustomerPassword,
+                IsGuest = customer.IsGuest,
+                UserEntered = "Create Customer",
+                DateEntered = DateTime.Now
+            };
+            _db.Customers.Add(newCustomer);
+            _db.SaveChanges();
+            customer.CustomerId = newCustomer.CustomerId;
+            return GetCustomerById(customer.CustomerId);
         }
 
-        public Customer UpdateCustomer(BackEndContext backEnd, Customer customer)
+        public Customer UpdateCustomer(CustomerReadDto customer)
         {
-            backEnd.Customers.Add(customer);
-            backEnd.SaveChanges();
-            return GetCustomerById(backEnd, customer.CustomerId);
+            if(customer.CustomerId == 0)
+            {
+                CreateNewCustomer(customer);
+            }
+            else{
+                var updateCustomer = new Customer{
+                    CustomerName = customer.CustomerName,
+                    PhoneNumber = customer.PhoneNumber,
+                    CustomerEmail = customer.CustomerEmail,
+                    CustomerPassword = customer.CustomerPassword,
+                    IsGuest = customer.IsGuest,
+                    UserModified = "Update Customer",
+                    DateModified = DateTime.Now
+                };
+                _db.Customers.Add(updateCustomer);
+                _db.SaveChanges();
+            }
+            return GetCustomerById(customer.CustomerId);
         }
 
-        public bool DeleteCustomer(BackEndContext backEnd, long customerId)
+        public bool DeleteCustomer( long customerId)
         {
-            Customer customer = GetCustomerById(backEnd, customerId);
-            backEnd.Customers.Remove(customer);
-            backEnd.SaveChanges();
+            Customer customer = GetCustomerById(customerId);
+            _db.Customers.Remove(customer);
+            _db.SaveChanges();
             return true;
         }
 
-        public Customer GetByEmailAndPassword(BackEndContext backEndContext, string email, string password)
+        public Customer GetByEmailAndPassword(string email, string password)
         {
             return _db.Customers.FirstOrDefault(x => x.CustomerEmail == email && x.CustomerPassword == password);
         }

@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using BackEnd.Dtos;
 using BackEnd.Models;
 
 namespace BackEnd.Data
 {
     public interface OrderInterface
     {
-        IEnumerable<Order> GetAllOrders(BackEndContext backEndContext);
-        Order GetOrderById(BackEndContext backEndContext, long orderId);
-        Order CreateNewOrder(BackEndContext backEndContext,Order order);
-        Order UpdateOrder(BackEndContext backEndContext, Order order);
-        bool DeleteOrder(BackEndContext backEndContext, long orderId);
+        IEnumerable<Order> GetAllOrders();
+        Order GetOrderById(long orderId);
+        Order CreateNewOrder(OrderReadDto order);
+        Order UpdateOrder(OrderReadDto order);
+        bool DeleteOrder(long orderId);
     }
 }

@@ -46,6 +46,10 @@ namespace BackEnd.Data
                 entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
                 entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
                 entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.HasOne(d => d.ItemType)
+                    .WithMany(p => p.Items)
+                    .HasForeignKey(d => d.ItemTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<ItemType>(entity =>
@@ -60,6 +64,10 @@ namespace BackEnd.Data
                 entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
                 entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
                 entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
@@ -67,6 +75,10 @@ namespace BackEnd.Data
                 entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
                 entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
                 entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.OrderItems)
+                    .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
 

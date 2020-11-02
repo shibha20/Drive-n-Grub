@@ -24,54 +24,39 @@ namespace Backend.Controllers
                 [HttpGet]
         public ActionResult <IEnumerable<SizeReadDto>> GetAllSize()
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return Ok(_mapper.Map<IEnumerable<SizeReadDto>>(_repo.GetAllSizes(backEndContext)));
-            }
+            return Ok(_mapper.Map<IEnumerable<SizeReadDto>>(_repo.GetAllSizes()));
         }
 
         //Get api/Sizes/{sizeId}
         [HttpGet("{sizeId}")]
         public ActionResult <SizeReadDto> GetSizeById(long sizeId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
+            var size = _repo.GetSizeById(sizeId);
+            if(size != null)
             {
-                var size = _repo.GetSizeById(backEndContext, sizeId);
-                if(size != null)
-                {
-                    return Ok(_mapper.Map<SizeReadDto>(size));
-                }
-                else{
-                    return NotFound();
-                }
+                return Ok(_mapper.Map<SizeReadDto>(size));
+            }
+            else{
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public ActionResult <SizeReadDto> CreateNewSize([FromBody] Size size)
+        public ActionResult <SizeReadDto> CreateNewSize([FromBody] SizeReadDto size)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<SizeReadDto>(_repo.CreateNewSize(backEndContext, size));
-            }
+            return _mapper.Map<SizeReadDto>(_repo.CreateNewSize(size));
         }
 
         [HttpPut]
-        public ActionResult <SizeReadDto> UpdateSize([FromBody] Size size)
+        public ActionResult <SizeReadDto> UpdateSize([FromBody] SizeReadDto size)
         {            
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<SizeReadDto>(_repo.UpdateSize(backEndContext,size));
-            }
+            return _mapper.Map<SizeReadDto>(_repo.UpdateSize(size));
         }
 
         [HttpDelete("{sizeId}")]
         public ActionResult <bool> DeleteSizeById(long sizeId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _repo.DeleteSize(backEndContext, sizeId);
-            }
+            return _repo.DeleteSize(sizeId);
         }
     }
 }

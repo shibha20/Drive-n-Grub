@@ -14,7 +14,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as Services from './services';
 
 import { WelcomePageComponent } from './welcome/welcome-page.component';
+<<<<<<< HEAD
 import { SignUpPageComponent } from './signup/signup-page.component';
+=======
+import {ModalModule } from 'ngb-modal';
+>>>>>>> 5cbdd63fa6ff4c337179f63b9f2be3fe536f6f79
 
 
 @NgModule({
@@ -41,6 +45,8 @@ import { SignUpPageComponent } from './signup/signup-page.component';
     MatCardModule,
     
     HttpClientModule,
+
+    ModalModule
   ],
   providers: [Services.NavigationService],
   bootstrap: [AppComponent]

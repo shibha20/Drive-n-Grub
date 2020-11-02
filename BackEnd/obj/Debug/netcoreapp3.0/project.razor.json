@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\SeniorProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+  "FilePath": "c:\\Users\\codyj\\Desktop\\School\\SoftwareEngineering\\SoftwareEngineeringProject\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -10170,7 +10170,7 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 900
+    "CSharpLanguageVersion": 800
   },
   "RootNamespace": "BackEnd",
   "Documents": [],

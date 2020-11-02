@@ -24,54 +24,39 @@ namespace Backend.Controllers
         [HttpGet]
         public ActionResult <IEnumerable<CustomerReadDto>> GetAllCustomer()
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(_repo.GetAllCustomers(backEndContext)));
-            }
+            return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(_repo.GetAllCustomers()));
         }
 
         //Get api/Customers/{customerId}
         [HttpGet("{customerId}")]
         public ActionResult <CustomerReadDto> GetCustomerById(long customerId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
+            var customer = _repo.GetCustomerById(customerId);
+            if(customer != null)
             {
-                    Customer customer = _repo.GetCustomerById(backEndContext, customerId);
-                    if(customer != null)
-                    {
-                        return Ok(_mapper.Map<CustomerReadDto>(customer));
-                    }
-                    else{
-                        return NotFound();
-                    }
+                return Ok(_mapper.Map<CustomerReadDto>(customer));
+            }
+            else{
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public ActionResult <CustomerReadDto> CreateNewCustomer([FromBody] Customer customer)
+        public ActionResult <CustomerReadDto> CreateNewCustomer([FromBody] CustomerReadDto customer)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<CustomerReadDto>(_repo.CreateNewCustomer(backEndContext, customer));
-            }
+            return _mapper.Map<CustomerReadDto>(_repo.CreateNewCustomer(customer));
         }
 
         [HttpPut]
-        public ActionResult <CustomerReadDto> UpdateCustomer([FromBody] Customer customer)
+        public ActionResult <CustomerReadDto> UpdateCustomer([FromBody] CustomerReadDto customer)
         {            
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<CustomerReadDto>(_repo.UpdateCustomer(backEndContext,customer));
-            }
+            return _mapper.Map<CustomerReadDto>(_repo.UpdateCustomer(customer));
         }
 
         [HttpDelete("{customerId}")]
         public ActionResult <bool> DeleteCustomerById(long customerId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _repo.DeleteCustomer(backEndContext, customerId);
-            }
+            return _repo.DeleteCustomer(customerId);
         }
 
         //Get api/Customers/GetByEmailAndPassword/{email}/{password}
@@ -80,7 +65,7 @@ namespace Backend.Controllers
         {
             using(BackEndContext backEndContext = BackEndContext.CreateContext())
             {
-                var customer = _repo.GetByEmailAndPassword(backEndContext, email, password);
+                var customer = _repo.GetByEmailAndPassword(email, password);
                 if(customer != null)
                 {
                     return Ok(_mapper.Map<CustomerReadDto>(customer));

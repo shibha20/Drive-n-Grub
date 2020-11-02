@@ -1,16 +1,17 @@
 using System.Collections.Generic;
+using BackEnd.Dtos;
 using BackEnd.Models;
 
 namespace BackEnd.Data
 {
     public interface CustomerInterface
     {
-        IEnumerable<Customer> GetAllCustomers(BackEndContext backEndContext);
-        Customer GetCustomerById(BackEndContext backEndContext, long customerId);
-        Customer GetByEmailAndPassword(BackEndContext backEndContext, string email, string password);
-        Customer CreateNewCustomer(BackEndContext backEndContext,Customer customer);
-        Customer UpdateCustomer(BackEndContext backEndContext, Customer customer);
-        bool DeleteCustomer(BackEndContext backEndContext, long customerId);
+        IEnumerable<Customer> GetAllCustomers();
+        Customer GetCustomerById(long customerId);
+        Customer GetByEmailAndPassword(string email, string password);
+        Customer CreateNewCustomer(CustomerReadDto customer);
+        Customer UpdateCustomer(CustomerReadDto customer);
+        bool DeleteCustomer(long customerId);
         bool ValidateCustomer(string email);
     }
 }

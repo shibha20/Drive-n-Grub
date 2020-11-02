@@ -24,54 +24,39 @@ namespace Backend.Controllers
                 [HttpGet]
         public ActionResult <IEnumerable<OrderItemReadDto>> GetAllOrderItem()
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return Ok(_mapper.Map<OrderItemReadDto>(_repo.GetAllOrderItems(backEndContext)));
-            }
+            return Ok(_mapper.Map<IEnumerable<OrderItemReadDto>>(_repo.GetAllOrderItems()));
         }
 
         //Get api/OrderItems/{orderItemId}
         [HttpGet("{orderItemId}")]
         public ActionResult <OrderItemReadDto> GetOrderItemById(long orderItemId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
+            var orderItem = _repo.GetOrderItemById(orderItemId);
+            if(orderItem != null)
             {
-                var orderItem = _repo.GetOrderItemById(backEndContext, orderItemId);
-                if(orderItem != null)
-                {
-                    return Ok(_mapper.Map<OrderItemReadDto>(orderItem));
-                }
-                else{
-                    return NotFound();
-                }
+                return Ok(_mapper.Map<OrderItemReadDto>(orderItem));
+            }
+            else{
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public ActionResult <OrderItemReadDto> CreateNewOrderItem([FromBody] OrderItem orderItem)
+        public ActionResult <OrderItemReadDto> CreateNewOrderItem([FromBody] OrderItemReadDto orderItem)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<OrderItemReadDto>(_repo.CreateNewOrderItem(backEndContext, orderItem));
-            }
+            return _mapper.Map<OrderItemReadDto>(_repo.CreateNewOrderItem(orderItem));
         }
 
         [HttpPut]
-        public ActionResult <OrderItemReadDto> UpdateOrderItem([FromBody] OrderItem orderItem)
+        public ActionResult <OrderItemReadDto> UpdateOrderItem([FromBody] OrderItemReadDto orderItem)
         {            
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _mapper.Map<OrderItemReadDto>(_repo.UpdateOrderItem(backEndContext,orderItem));
-            }
+            return _mapper.Map<OrderItemReadDto>(_repo.UpdateOrderItem(orderItem));
         }
 
         [HttpDelete("{orderItemId}")]
         public ActionResult <bool> DeleteOrderItemById(long orderItemId)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                return _repo.DeleteOrderItem(backEndContext, orderItemId);
-            }
+            return _repo.DeleteOrderItem(orderItemId);
         }
     }
 }
