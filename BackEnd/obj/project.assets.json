@@ -5797,11 +5797,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\13309\\Documents\\GitHub\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
       "projectName": "BackEnd",
-      "projectPath": "C:\\Users\\13309\\Documents\\GitHub\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
-      "packagesPath": "C:\\Users\\13309\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\13309\\Documents\\GitHub\\Drive-n-Grub\\BackEnd\\obj\\",
+      "projectPath": "C:\\Users\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+      "packagesPath": "C:\\Users\\SoftwareEngineering\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
