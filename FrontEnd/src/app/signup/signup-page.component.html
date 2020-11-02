@@ -1,0 +1,40 @@
+<head>
+    <title> Signup page</title>
+</head>
+<body>
+    <!-- Create a table and center the components on the table -->
+    
+        <div class="signup-container">
+            <h1>Sign Up</h1>
+            <p>Please fill up the form to create an account.</p>
+            <table>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td><input [(ngModel)]="firstName" placeholder="Enter Customer name" id="username" style=" text-align:center; width: 55%" /></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name</label></td>
+                    <td><input [(ngModel)]="lastName" placeholder="Enter Customer name" id="username" style=" text-align:center; width: 55%" /></td>
+                </tr>
+                <tr>
+                    <td><label>Email</label></td>
+                    <td><input [(ngModel)]="customer.CustomerEmail" placeholder=" example@gmail.com" id="email" type="email" style=" text-align:center; width: 55%" /></td>
+                </tr>
+                <tr>
+                    <td><label>Password</label></td>
+                    <td><input [(ngModel)]="customer.CustomerPassword" placeholder="Enter a password" id="password" type="password" style=" text-align:center; width: 55%" /></td>
+                </tr>
+                <tr>
+                    <td><label>Phone Number</label></td>
+                    <td><input [(ngModel)]="customer.PhoneNumber" placeholder="Enter a phone number" id="phonenumber" type="number" maxlength="11" style=" text-align:center; width: 55%" /></td>
+                </tr>
+            </table>   
+        </div>
+        
+    <footer>
+        <div class="btn-group" style="background: #41403f; position: absolute; top: 760; left: 0; right: 0; bottom: 0px;">
+            <button class="button" (click)="CreateCustomer()">Create Account</button>
+        </div>
+    </footer>
+
+</body>
