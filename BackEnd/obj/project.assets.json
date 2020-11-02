@@ -5791,25 +5791,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SoftwareEngineering\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\SoftwareEngineering\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+      "projectUniqueName": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
       "projectName": "BackEnd",
-      "projectPath": "C:\\Users\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
-      "packagesPath": "C:\\Users\\SoftwareEngineering\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\obj\\",
+      "projectPath": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\BackEnd.csproj",
+      "packagesPath": "C:\\SoftwareEngineering\\.nuget\\packages\\",
+      "outputPath": "C:\\SoftwareEngineering\\Project\\Drive-n-Grub\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\SoftwareEngineering\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\SoftwareEngineering\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
