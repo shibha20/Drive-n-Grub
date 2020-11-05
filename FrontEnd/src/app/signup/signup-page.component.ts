@@ -10,17 +10,15 @@ import * as Services from '../services/navigation.service';
 export class SignUpPageComponent {
 
     constructor(private http: HttpClient, private nav: Services.NavigationService) { }
-    email: string;
-    firstName: string;
-    lastName: string;
-    passWord: number;
+    firstName: string = null;
+    lastName: string = null;
     customer = {
       CustomerId: 0,
-      CustomerName: "",
-      CustomerEmail: "",
-      CustomerPassword: "",
+      CustomerName: null,
+      CustomerEmail: null,
+      CustomerPassword: null,
       IsGuest: false,
-      PhoneNumber:""
+      PhoneNumber:null
     };
     savedCustomer: any;
     business: any;
@@ -33,12 +31,17 @@ export class SignUpPageComponent {
         if(result==false){
           this.http.post('http://localhost:5000/api/Customers', this.customer).subscribe(x => {
                   this.savedCustomer = x;
+                  this.nav.navigate('orderMenu/' + this.savedCustomer.customerId);
             });
         }
         else{
-
+          alert("This Email is Already being Used");
         }
       });
+    }
+
+    Back(){
+      this.nav.navigate('welcomePage');
     }
     
 }
