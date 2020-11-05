@@ -1,17 +1,12 @@
 <Header>
-    <div style="background: #ede7df; position: absolute; top: 0; left: 0; right: 0; height: 60px;">
+    <div style="background: #ede7df; position: fixed; top: 0; left: 0; right: 0; height: 60px;">
         <h1 style="text-align:center; font-size: x-large; color: #202044;">
         Welcome to Drive-N-Grub
         </h1>
     </div>
 </Header>
-<Body style="background: #41403f; position: absolute; top: 60px; left: 0; right: 0; bottom: 100px; margin: 0;">
-    <div style="padding-top:100px; text-align: center;">
-        <button class="button"style="text-align:center; font-size:x-large; padding-left: 10px; text-decoration: underline;" (click)="CustomerLogin()">
-            <b>
-                Log In:
-            </b>
-        </button>  
+<Body style="background: #41403f; position: fixed; top: 60px; left: 0; right: 0; bottom: 100px; margin: 0;">
+    <div style="padding-top:100px; text-align: center;"> 
         <div style="padding: 10px; text-align: center;">
             <input [(ngModel)]="email" placeholder="email: example@gmail.com" style=" text-align:center; width: 55%" />
         </div>
@@ -19,10 +14,15 @@
             <input type="password" [(ngModel)]="passWord" placeholder="password" style=" text-align:center; width: 55%" />
         </div>             
         <br>
+        <button class="button"style="text-align:center; font-size:x-large; padding-left: 10px; text-decoration: underline;" (click)="CustomerLogin()">
+            <b>
+                Log In
+            </b>
+        </button>
     </div>
 </Body>
 <Footer>
-    <div class="btn-group" style="background: #41403f; position: absolute; top: 760; left: 0; right: 0; bottom: 0px;">
+    <div class="btn-group" style="background: #41403f; position: fixed; top: 760; left: 0; right: 0; bottom: 0px;">
         <button class="button" (click)="GuestLogin()">Continue as Guest</button>
         <button class="button" (click)="BusinessLogin()">Continue as a Business</button>
         <button class="button" (click)="SignUp()">Sign Up</button>
