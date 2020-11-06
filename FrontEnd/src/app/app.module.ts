@@ -16,13 +16,17 @@ import * as Services from './services';
 import { WelcomePageComponent } from './welcome/welcome-page.component';
 import { SignUpPageComponent } from './signup/signup-page.component';
 import {ModalModule } from 'ngb-modal';
+import { BusinessPageComponent } from './businesspage/businesspage.component';
+import { BusinessLoginComponent } from './businesslogin/businesslogin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomePageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    BusinessPageComponent,
+    BusinessLoginComponent
   ],
   imports: [
     BrowserModule,

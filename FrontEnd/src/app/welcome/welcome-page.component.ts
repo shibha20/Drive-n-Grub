@@ -36,7 +36,7 @@ export class WelcomePageComponent implements OnInit {
 
     BusinessLogin(){
       //Got to Next Page
-      this.nav.navigate('businessLogin')
+      this.nav.navigate('businesslogin')
  
     }
 
