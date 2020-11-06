@@ -33,13 +33,13 @@ namespace BackEnd
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //services.AddScoped<ClassNameInterface, ClassNameService>();
+            services.AddScoped<BusinessInterface, BusinessService>();
             services.AddScoped<CustomerInterface, CustomerService>();
             services.AddScoped<ItemInterface, ItemService>();
             services.AddScoped<ItemTypeInterface, ItemTypeService>();
             services.AddScoped<OrderInterface, OrderService>();
             services.AddScoped<OrderItemInterface, OrderItemService>();
             services.AddScoped<SizeInterface, SizeService>();
-            //services.AddScoped<ClassNameInterface, ClassNameSer
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

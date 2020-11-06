@@ -9,6 +9,7 @@ namespace BackEnd.Profiles
         public SizesProfile()
         {
             CreateMap<Size, SizeReadDto>();
+            CreateMap<SizeReadDto, Size>();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace BackEnd.Profiles
         public CustomersProfile()
         {
             CreateMap<Customer, CustomerReadDto>();
+            CreateMap<CustomerReadDto, Customer>();
         }
     }
 }

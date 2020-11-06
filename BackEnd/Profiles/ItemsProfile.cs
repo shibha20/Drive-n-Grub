@@ -9,6 +9,7 @@ namespace BackEnd.Profiles
         public ItemsProfile()
         {
             CreateMap<Item, ItemReadDto>();
+            CreateMap<ItemReadDto, Item>();
         }
     }
 }

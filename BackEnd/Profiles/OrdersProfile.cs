@@ -9,6 +9,7 @@ namespace BackEnd.Profiles
         public OrdersProfile()
         {
             CreateMap<Order, OrderReadDto>();
+            CreateMap<OrderReadDto, Order>();
         }
     }
 }

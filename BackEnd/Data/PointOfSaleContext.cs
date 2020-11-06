@@ -25,6 +25,7 @@ namespace BackEnd.Data
             return dbContext;
         }
         
+        public DbSet<Business> Businesses { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemType> ItemTypes { get; set; }
@@ -34,6 +35,12 @@ namespace BackEnd.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             AddGlobalFilters(modelBuilder);
+            modelBuilder.Entity<Business>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+            });
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
