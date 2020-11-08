@@ -1,24 +1,24 @@
 using System;
 using System.Collections.Generic;
-using BackEnd.Models;
 
 namespace BackEnd.Models
 {   
-    public class Size
+    public class StatusType
     {
-        public Size()
+        public StatusType()
         {
-            this.Items = new HashSet<Item>();
+            this.Orders = new HashSet<Order>();
         }
-        public long SizeId { get; set; }
-        public string SizeName { get; set; }
+        public long StatusTypeId { get; set; }
+        public string StatusTypeName { get; set; }
 
-         public DateTime DateEntered { get; set; }
+        public DateTime DateEntered { get; set; }
         public string UserEntered { get; set; }
         public DateTime? DateModified { get; set; }
         public string UserModified { get; set; }
         public DateTime? DateDeleted { get; set; }
         public string UserDeleted { get; set; }
-        public virtual HashSet<Item> Items { get; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

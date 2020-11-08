@@ -58,5 +58,10 @@ namespace Backend.Controllers
         {
             return _repo.DeleteOrderItem(orderItemId);
         }
+        [HttpGet("GetAllByOrderId/{orderId}")]
+        public ActionResult<List<OrderItemReadDto>> GetAllOrderItem(long orderId)
+        {
+            return Ok(_mapper.Map<List<OrderItemReadDto>>(_repo.GetAllByOrderId(orderId)));
+        }
     }
 }

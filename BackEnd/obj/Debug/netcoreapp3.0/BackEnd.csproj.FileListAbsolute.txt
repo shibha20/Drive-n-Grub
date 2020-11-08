@@ -63,3 +63,6 @@ C:\SoftwareEngineering\Project\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\Back
 C:\SoftwareEngineering\Project\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.csproj.CoreCompileInputs.cache
 C:\SoftwareEngineering\Project\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
 C:\SoftwareEngineering\Project\Drive-n-Grub\BackEnd\obj\Debug\netcoreapp3.0\BackEnd.csproj.CopyComplete
+C:\SoftwareEngineering\Project\Drive-n-Grub\BackEnd\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\SoftwareEngineering\Project\Drive-n-Grub\BackEnd\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\SoftwareEngineering\Project\Drive-n-Grub\BackEnd\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll

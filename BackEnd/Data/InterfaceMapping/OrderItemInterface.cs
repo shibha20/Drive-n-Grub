@@ -11,5 +11,7 @@ namespace BackEnd.Data
         OrderItem CreateNewOrderItem(OrderItemReadDto orderItem);
         OrderItem UpdateOrderItem(OrderItemReadDto orderItem);
         bool DeleteOrderItem(long orderItemId);
+        List<OrderItem> CreateListOfOrderItems(List<OrderItemReadDto> orderItems);
+        List<OrderItem> GetAllByOrderId(long orderId);
     }
 }

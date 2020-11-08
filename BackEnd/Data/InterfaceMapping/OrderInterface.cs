@@ -7,6 +7,7 @@ namespace BackEnd.Data
     public interface OrderInterface
     {
         IEnumerable<Order> GetAllOrders();
+        List<Order> GetAllTodaysOpenOrders();
         Order GetOrderById(long orderId);
         Order CreateNewOrder(OrderReadDto order);
         Order UpdateOrder(OrderReadDto order);

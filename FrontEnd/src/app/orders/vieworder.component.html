@@ -1,0 +1,35 @@
+<div class="modal">
+    <body>
+        <br>
+        <table style="color: white;">
+            <tr>
+                <th style="font-size: 18px; padding-right: 10px">Item Name:</th>
+                <th style="font-size: 18px; padding-right: 10px">Item Price:</th>
+                <th style="font-size: 18px; padding-right: 10px">Item Size:</th>
+                
+            </tr>
+            <br>
+            <tr *ngFor="let x of orderItems">
+                <td>{{x.item.itemName}}</td>
+                <td>{{x.item.price | currency}}</td>
+                <td *ngIf="x.item.sizeId != null">{{x.item.size.sizeName}}</td>
+            </tr>
+        </table>
+        <br>
+        <div style="color: white;">
+            <label>Tax:</label>
+            {{order.tax | currency}}
+        </div> 
+        <div style="color: white;">
+            <label>Total:</label>
+            {{order.totalPrice | currency}}
+        </div>   
+    </body>
+    <br>
+    <footer>
+        <div style="padding-right: 5%; padding-bottom: 5%;">
+            <button type="button" class="close" (click)="Cancel()">Close</button>
+        </div>
+        <br>            
+    </footer>
+</div>

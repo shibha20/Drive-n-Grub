@@ -1,5 +1,103 @@
 <div class="row">
-    <div class="column"></div>
-    <div class="column"></div>
-    <div class="column"></div>
-  </div>
+    <div class="column">
+        <header><b>Incoming</b></header>
+        <br>
+        <table style="width: 100%;">
+            <tr *ngFor="let x of incomingOrders">
+                <br>
+                <mat-card>
+
+                    <tr>
+                        <td style="width: 50%;"></td>
+                        <td>{{x.customer.customerName}}</td> 
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>{{x.customer.phoneNumber}}</td>
+                        <td style="width: 60%;"></td>
+                        <td>{{x.totalPrice | currency}}</td>                    
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>
+                            <button (click)="View(x)">View</button>
+                        </td>
+                        <td style="width: 65%;"></td>              
+                        <td >
+                            <button (click)="ChangeStatus(x)">Prepping</button>
+                        </td>
+                    </tr>
+                </mat-card>
+            </tr>
+        </table>
+    </div>
+    <div class="column">
+        <header><b>Being Prepped</b></header>
+        <br>
+        <table style="width: 100%;">
+            <tr *ngFor="let x of preppingOrders">
+                <br>
+                <mat-card>
+
+                    <tr>
+                        <td style="width: 50%;"></td>
+                        <td>{{x.customer.customerName}}</td> 
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>{{x.customer.phoneNumber}}</td>
+                        <td style="width: 60%;"></td>
+                        <td>{{x.totalPrice | currency}}</td>                    
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>
+                            <button (click)="View(x)">View</button>
+                        </td>
+                        <td style="width: 65%;"></td>              
+                        <td >
+                            <button (click)="ChangeStatus(x)">Completed</button>
+                        </td>
+                    </tr>
+                </mat-card>
+            </tr>
+        </table>
+    </div>
+    <div class="column" style="padding-right: 0%;">
+        <header><b>Completed</b></header>
+        <br>
+        <table style="width: 100%;">
+            <tr *ngFor="let x of completedOrders">
+                <br>
+                <mat-card>
+
+                    <tr>
+                        <td style="width: 50%;"></td>
+                        <td>{{x.customer.customerName}}</td> 
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>{{x.customer.phoneNumber}}</td>
+                        <td style="width: 60%;"></td>
+                        <td>{{x.totalPrice | currency}}</td>                    
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>
+                            <button (click)="View(x)">View</button>
+                        </td>
+                        <td style="width: 65%;"></td>              
+                        <td >
+                            <button (click)="ChangeStatus(x)">Picked Up</button>
+                        </td>
+                    </tr>
+                </mat-card>
+            </tr>
+        </table>
+    </div>
+</div>
+<Footer>
+    <div class="btn-group" style="background: #41403f; position: fixed; top: 760; left: 0; right: 0; bottom: 0px;">
+        <button class="button" (click)="SignOut()"><b>Sign Out</b></button>
+    </div>
+</Footer>
