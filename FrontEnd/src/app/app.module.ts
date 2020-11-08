@@ -20,6 +20,7 @@ import {ModalModule } from 'ngb-modal';
 import { BusinessPageComponent } from './businesspage/businesspage.component';
 import { BusinessLoginComponent } from './businesslogin/businesslogin.component';
 import { ViewOrderComponent } from './orders/vieworder.component';
+import { GuestPageComponent } from './guest/guest-page.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ViewOrderComponent } from './orders/vieworder.component';
     SignUpPageComponent,
     BusinessPageComponent,
     BusinessLoginComponent,
-    ViewOrderComponent
+    ViewOrderComponent,
+    GuestPageComponent
   ],
   imports: [
     BrowserModule,
