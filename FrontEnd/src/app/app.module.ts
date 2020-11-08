@@ -18,6 +18,7 @@ import { SignUpPageComponent } from './signup/signup-page.component';
 import {ModalModule } from 'ngb-modal';
 import { BusinessPageComponent } from './businesspage/businesspage.component';
 import { BusinessLoginComponent } from './businesslogin/businesslogin.component';
+import { GuestPageComponent } from './guest/guest-page.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { BusinessLoginComponent } from './businesslogin/businesslogin.component'
     WelcomePageComponent,
     SignUpPageComponent,
     BusinessPageComponent,
-    BusinessLoginComponent
+    BusinessLoginComponent,
+    GuestPageComponent
   ],
   imports: [
     BrowserModule,
