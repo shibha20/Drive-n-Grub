@@ -24,6 +24,8 @@ namespace BackEnd.Data
             var dbContext = new BackEndContext();
             return dbContext;
         }
+
+
         
         public DbSet<Business> Businesses { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -32,56 +34,70 @@ namespace BackEnd.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<StatusType> StatusTypes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             AddGlobalFilters(modelBuilder);
             modelBuilder.Entity<Business>(entity =>
             {
-                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
             });
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Item>(entity =>
             {
-                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
                 entity.HasOne(d => d.ItemType)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.ItemTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+                entity.HasOne(d => d.Size)
+                    .WithMany(p => p.Items)
+                    .HasForeignKey(d => d.SizeId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<ItemType>(entity =>
             {
-                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
+                entity.HasOne(d => d.StatusType)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.StatusTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
+
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
             {
-                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
+                entity.HasOne(d => d.Item)
+                    .WithMany(p => p.OrderItems)
+                    .HasForeignKey(d => d.ItemId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.OrderId)
@@ -91,9 +107,16 @@ namespace BackEnd.Data
 
             modelBuilder.Entity<Size>(entity =>
             {
-                entity.Property(entity => entity.DateDeleted).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateEntered).HasColumnType("dateTime");
-                entity.Property(entity => entity.DateModified).HasColumnType("dateTime");
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<StatusType>(entity =>
+            {
+                entity.Property(entity => entity.DateDeleted).HasColumnType("datetime");
+                entity.Property(entity => entity.DateEntered).HasColumnType("datetime");
+                entity.Property(entity => entity.DateModified).HasColumnType("datetime");
             });
 
         }
@@ -109,7 +132,7 @@ namespace BackEnd.Data
 
             ChangeTracker.DetectChanges();
 
-            SaveUpdates(null);
+            SaveUpdates("Admin");
 
             return SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
@@ -165,18 +188,19 @@ namespace BackEnd.Data
                     }
                 }
 
-                foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Modified))
-                {
-                    var t = entry.Entity.GetType();
-                    if (t.GetProperty("DateModified") != null)
-                    {
-                        t.GetProperty("DateModified").SetValue(entry.Entity, DateTime.Now);
-                    }
-                    if (t.GetProperty("UserModified") != null)
-                    {
-                        t.GetProperty("UserModified").SetValue(entry.Entity, "Admin");
-                    }
-                }
+            //foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Modified))
+            //{
+            //    var t = entry.Entity.GetType();
+            //    if (t.GetProperty("DateModified") != null)
+            //    {
+            //        DateTime now = DateTime.Now.ToLocalTime();
+            //        t.GetProperty("DateModified").SetValue(entry.Entity, now);
+            //    }
+            //    if (t.GetProperty("UserModified") != null)
+            //    {
+            //        t.GetProperty("UserModified").SetValue(entry.Entity, "Admin");
+            //    }
+            //}
         }
 
         private void AddGlobalFilters(ModelBuilder modelBuilder)

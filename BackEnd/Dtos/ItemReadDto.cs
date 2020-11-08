@@ -14,8 +14,8 @@ namespace BackEnd.Dtos
         public long ItemTypeId { get; set; }
         public decimal Price { get; set; }
         public string ItemName { get; set; }
+
         public virtual SizeReadDto Size { get; set; }
-        public virtual ItemTypeReadDto ItemType { get; set; }
         public virtual ICollection<OrderItemReadDto> OrderItems { get; set; }
 
     }

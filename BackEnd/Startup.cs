@@ -32,6 +32,10 @@ namespace BackEnd
             services.AddDbContext<BackEndContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("BackEndConnection")));
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             //services.AddScoped<ClassNameInterface, ClassNameService>();
             services.AddScoped<BusinessInterface, BusinessService>();
             services.AddScoped<CustomerInterface, CustomerService>();
@@ -40,6 +44,7 @@ namespace BackEnd
             services.AddScoped<OrderInterface, OrderService>();
             services.AddScoped<OrderItemInterface, OrderItemService>();
             services.AddScoped<SizeInterface, SizeService>();
+            services.AddScoped<StatusTypeInterface, StatusTypeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card'
+import {MatDividerModule} from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as Services from './services';
@@ -18,6 +19,7 @@ import { SignUpPageComponent } from './signup/signup-page.component';
 import {ModalModule } from 'ngb-modal';
 import { BusinessPageComponent } from './businesspage/businesspage.component';
 import { BusinessLoginComponent } from './businesslogin/businesslogin.component';
+import { ViewOrderComponent } from './orders/vieworder.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { BusinessLoginComponent } from './businesslogin/businesslogin.component'
     WelcomePageComponent,
     SignUpPageComponent,
     BusinessPageComponent,
-    BusinessLoginComponent
+    BusinessLoginComponent,
+    ViewOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,10 @@ import { BusinessLoginComponent } from './businesslogin/businesslogin.component'
     
     HttpClientModule,
 
-    ModalModule
+    ModalModule,
+
+    MatDividerModule,
+    
   ],
   providers: [Services.NavigationService],
   bootstrap: [AppComponent]

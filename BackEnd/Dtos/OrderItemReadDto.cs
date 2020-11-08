@@ -6,10 +6,10 @@ namespace BackEnd.Dtos
     {   public long OrderItemId { get; set; }
         public long OrderId { get; set; }
         public long ItemId { get; set; }
-
-
         public virtual ItemReadDto Item { get; set; }
         public virtual OrderReadDto Order { get; set; }
+
+
     }
 
 }

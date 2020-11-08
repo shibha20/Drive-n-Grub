@@ -63,17 +63,7 @@ namespace Backend.Controllers
         [HttpGet("GetByEmailAndPassword/{email}/{password}")]
         public ActionResult <CustomerReadDto> GetByEmailAndPassword(string email, string password)
         {
-            using(BackEndContext backEndContext = BackEndContext.CreateContext())
-            {
-                var customer = _repo.GetByEmailAndPassword(email, password);
-                if(customer != null)
-                {
-                    return Ok(_mapper.Map<CustomerReadDto>(customer));
-                }
-                else{
-                    return NotFound();
-                }
-            }
+            return Ok(_mapper.Map<CustomerReadDto>(_repo.GetByEmailAndPassword(email, password)));
         }
 
         [HttpGet("ValidateCustomer/{email}")]

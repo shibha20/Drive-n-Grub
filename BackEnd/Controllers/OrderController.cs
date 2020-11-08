@@ -58,5 +58,12 @@ namespace Backend.Controllers
         {
             return _repo.DeleteOrder(orderId);
         }
+
+        [HttpGet("OpenOrders")]
+        public ActionResult<List<OrderReadDto>> GetAllTodaysOpenOrders()
+        {
+            return Ok(_mapper.Map<List<OrderReadDto>>(_repo.GetAllTodaysOpenOrders()));
+        }
+
     }
 }
