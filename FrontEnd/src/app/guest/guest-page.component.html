@@ -1,11 +1,11 @@
 <header style="background: #ede7df; position: fixed; top: 0; left: 0; right: 0; height: 80px;">
-    <h1 style="text-align: center; padding-top: 10px;">Sign Up</h1>
-    <p style="text-align: center;">Please fill up the form to create an account.</p>
+    <h1 style="text-align: center; padding-top: 10px;">Continue As Guest</h1>
+    <p style="text-align: center;">Please fill up the form to continue.</p>
 </header>
-<body style="position: fixed; top: 80px; left: 0; right: 0; bottom: 100px; margin: 0;">
+<body style="background:#41403f; position: fixed; top: 80px; left: 0; right: 0; bottom: 100px; margin: 0;">
     <!-- Create a table and center the components on the table -->
     <br>
-    <table class="center">
+    <table class="center" style="background:#41403f;">
         <tr >
             <td><label><b>First Name</b></label></td>
             <td><input [(ngModel)]="firstName" placeholder="Enter Customer First Name"  style=" text-align:center" /></td>
@@ -19,17 +19,14 @@
             <td><input [(ngModel)]="customer.CustomerEmail" placeholder=" example@gmail.com" id="email" type="email" style=" text-align:center" /></td>
         </tr>
         <tr>
-            <td><label><b>Password</b></label></td>
-            <td><input [(ngModel)]="customer.CustomerPassword" placeholder="Enter a password" id="password" type="password" style=" text-align:center" /></td>
-        </tr>
-        <tr>
             <td><label><b>Phone Number</b></label></td>
             <td><input [(ngModel)]="customer.PhoneNumber" placeholder="Enter a phone number" id="phonenumber" type="number" maxlength="11" style=" text-align:center" /></td>
         </tr>
     </table>   
 </body>
-<footer style="background: #41403f; position: fixed; top: 760; left: 0; right: 0; bottom: 0px;">
+<footer style="background: #ede7df; position: fixed; top: 760; left: 0; right: 0; bottom: 0px;">
     <div class="btn-group">
+        <button [disabled]="firstName == null || lastName == null || customer.CustomerEmail == null ||  customer.PhoneNumber == null" class="button" (click)="CreateCustomer()">Continue</button>
         <button class="button" (click)="Back()">Back</button>
     </div>
 </footer>

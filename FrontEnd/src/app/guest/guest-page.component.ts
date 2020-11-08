@@ -16,7 +16,7 @@ export class GuestPageComponent {
       CustomerId: 0,
       CustomerName: null,
       CustomerEmail: null,
-      CustomerPassword: null,
+      CustomerPassword: "",
       IsGuest: true,
       PhoneNumber:null
     };
@@ -35,7 +35,7 @@ export class GuestPageComponent {
             });
         }
         else{
-          alert("This Email is Already being Used");
+          alert("This Email Has An Account");
         }
       });
     }
