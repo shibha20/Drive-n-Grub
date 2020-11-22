@@ -1,0 +1,37 @@
+<Header>
+    <div style="background: #ede7df; position: fixed; top: 0; left: 0; right: 0; height: 60px;">
+        <h1 style="text-align:center; font-size: x-large; color: #202044;">
+        Check Out
+        </h1>
+    </div>
+  </Header>
+  <Body style= "position: fixed; top: 60px; left: 0; right: 0; bottom: 100px; margin: 0;">
+    <table class="center" style="background:white;">
+      <tr >
+        <td><label><b>Name on Card</b></label></td>
+        <td><input type="text" id="cname" name="cardname" placeholder="John More Doe"  style=" text-align:center" /></td>
+      </tr>
+      <tr >
+          <td><label><b>Credit card number</b></label></td>
+          <td><input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"  style=" text-align:center" /></td>
+      </tr>
+      <tr>
+          <td><label><b>Exp Month</b></label></td>
+          <td><input type="text" id="expmonth" name="expmonth" placeholder="September" style=" text-align:center" /></td>
+      </tr>
+      <tr>
+          <td><label><b>Exp Year</b></label></td>
+          <td><input type="text" id="expyear" name="expyear" placeholder="2018" style=" text-align:center" /></td>
+      </tr>
+      <tr>
+          <td><label for="cvv"><b>CVV</b></label></td>
+          <td><input type="text" id="cvv" name="cvv" placeholder="352" style=" text-align:center" /></td>
+      </tr>
+  </table>  
+  </Body>
+  <Footer>
+    <div class="btn-group" style="background: #41403f; position: fixed; top: 760; left: 0; right: 0; bottom: 0px;">
+      <button *ngIf="order != null" class="button" (click)="Proceed()">Proceed ({{order.totalPrice | currency}})</button>
+      <button class="button" (click)="Back()">Start Over</button>
+    </div>
+  </Footer>

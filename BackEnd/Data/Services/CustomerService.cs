@@ -77,7 +77,7 @@ namespace BackEnd.Data.Services
 
         public bool ValidateCustomer(string email)
         {
-            Customer customer = _db.Customers.FirstOrDefault(x => x.CustomerEmail == email);
+            Customer customer = _db.Customers.FirstOrDefault(x => x.CustomerEmail == email && x.DateDeleted == null);
             if(customer!=null)
             {
                 return true;

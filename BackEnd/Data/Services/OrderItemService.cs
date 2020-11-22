@@ -85,12 +85,10 @@ namespace BackEnd.Data.Services
             Order order = _order.GetOrderById(orderId);
 
             List<OrderItem> mappedOrderItems = _mapper.Map<List<OrderItem>>(orderItems);
-
+            List<long> orderItemIds = mappedOrderItems.Select(x => x.OrderItemId).ToList();
             List<OrderItem> currentOrderItems = GetAllByOrderId(orderId);
-            List<OrderItem> currentOrderItemsToReturn = currentOrderItems.Intersect(mappedOrderItems).ToList();
-            List<OrderItem> currentOrderItemsToDelete = currentOrderItems.Except(mappedOrderItems).ToList();
-            List<OrderItem> NewOrderItemsToAdd = (List<OrderItem>)mappedOrderItems.Except(currentOrderItems).ToList();
-            List<OrderItem> orderItemsToReturn = currentOrderItemsToReturn;
+            List<OrderItem> NewOrderItemsToAdd = mappedOrderItems.Where(x => x.OrderItemId == 0).ToList();
+            List<OrderItem> currentOrderItemsToDelete = currentOrderItems.Where(x => !orderItemIds.Contains(x.OrderItemId)).ToList();
 
             foreach (OrderItem orderItem in NewOrderItemsToAdd)
             {
@@ -107,7 +105,6 @@ namespace BackEnd.Data.Services
                 _db.OrderItems.Add(newOrderItem);
                 _db.SaveChanges();
                 orderItem.OrderItemId = newOrderItem.OrderItemId;
-                orderItemsToReturn.Add(newOrderItem);
             }
 
             foreach (OrderItem orderItem in currentOrderItemsToDelete)
@@ -125,24 +122,7 @@ namespace BackEnd.Data.Services
                 _db.SaveChanges();
             }
 
-            foreach (OrderItem orderItemToReturn in orderItemsToReturn)
-            {
-                price = price + orderItemToReturn.Item.Price;
-                if (orderItemToReturn.Item.ItemTypeId == 5)
-                {
-                    tax = +Math.Round((orderItemToReturn.Item.Price * Convert.ToDecimal(0.0575) + tax) * 100) / 100;
-                }
-
-            }
-
-            order.TotalPrice = (price + tax);
-            order.Tax = tax;
-            order.UserModified = "Update Order";
-            order.DateModified = DateTime.Now;
-
-            _db.Update(order);
-            _db.SaveChanges();
-            return orderItemsToReturn;
+            return mappedOrderItems;
         }
     }
 }

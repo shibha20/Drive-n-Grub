@@ -14,7 +14,7 @@ namespace BackEnd.Dtos
         public long CustomerId { get; set; }
         public decimal TotalPrice { get; set; }
         public Nullable<decimal> Tax { get; set; }
-        public Nullable<decimal> Disount { get; set; }
+        public Nullable<decimal> Discount { get; set; }
         public long StatusTypeId { get; set; }
         public virtual CustomerReadDto Customer { get; set; }
         public virtual StatusTypeReadDto StatusType { get; set; }

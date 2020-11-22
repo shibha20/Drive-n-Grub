@@ -21,6 +21,11 @@ import { BusinessPageComponent } from './businesspage/businesspage.component';
 import { BusinessLoginComponent } from './businesslogin/businesslogin.component';
 import { ViewOrderComponent } from './orders/vieworder.component';
 import { GuestPageComponent } from './guest/guest-page.component';
+import { OrderPageComponent } from './orders/orderpage.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+import { ViewCartComponent } from './viewcart/viewcart.component';
+import { CheckOutComponent } from './checkOut/checkOut.component';
 
 
 @NgModule({
@@ -31,7 +36,10 @@ import { GuestPageComponent } from './guest/guest-page.component';
     BusinessPageComponent,
     BusinessLoginComponent,
     ViewOrderComponent,
-    GuestPageComponent
+    GuestPageComponent,
+    OrderPageComponent,
+    ViewCartComponent,
+    CheckOutComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +63,10 @@ import { GuestPageComponent } from './guest/guest-page.component';
     ModalModule,
 
     MatDividerModule,
+
+    MatExpansionModule,
+
+    MatTableModule
     
   ],
   providers: [Services.NavigationService],

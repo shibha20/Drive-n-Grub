@@ -1,0 +1,60 @@
+.modal header {
+    background-color: white;
+    height: 25%; /* Full height */
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    text-decoration: black;
+    font-size: 30pt;
+  }
+  
+  /* Modal Body */
+  .modal body {
+    height: 80%; /* Full height */
+    background-color: #424242;
+    font-size: 20pt;
+    
+  }
+  
+  
+  /* Modal Footer */
+  .modal footer {
+    height: 10%; /* Full height */
+    width: 100%;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    margin: auto;
+    padding: 20px;
+    width: auto;
+    height: auto;
+    background-color: #424242;
+    height: fit-content; /* Full height */
+    
+  }
+
+  .modal {
+    position: fixed; /* Stay in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto; /* Full width */
+    height: auto; /* Full height */
+    background-color: #424242;; /* Fallback color */
+  }
+
+  /* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 5px;
+    border: 2px solid#aaa6a1;
+    background-color:white;
+  }
+
+
+  
+  /* Add Animation */

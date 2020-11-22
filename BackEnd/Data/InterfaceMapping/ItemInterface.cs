@@ -12,5 +12,6 @@ namespace BackEnd.Data
         Item UpdateItem(ItemReadDto item);
         bool DeleteItem(long itemId);
         IEnumerable<Item> GetItemByItemTypeId(long itemTypeId);
+  
     }
 }
