@@ -26,7 +26,9 @@ namespace BackEnd.Data.Services
 
         public Order GetOrderById(long orderId)
         {
-            return _db.Orders.FirstOrDefault(x => x.OrderId == orderId);
+            return _db.Orders.
+                Include(x => x.OrderItems)
+                .FirstOrDefault(x => x.OrderId == orderId);
         }
 
         public Order CreateNewOrder(OrderReadDto order)
@@ -36,6 +38,7 @@ namespace BackEnd.Data.Services
                 CustomerId = order.CustomerId,
                 TotalPrice = order.TotalPrice,
                 Tax = order.Tax,
+                Discount = order.Discount,
                 StatusTypeId = order.StatusTypeId,
                 UserEntered = "Create Order",
                 DateEntered = DateTime.Now
@@ -54,20 +57,19 @@ namespace BackEnd.Data.Services
                 CreateNewOrder(order);
             }
             else{
-                Order currentOrder = GetOrderById(order.OrderId);
-                var updateOrder = new Order
-                {
-                    OrderId = order.OrderId,
-                    CustomerId = order.CustomerId,
-                    TotalPrice = order.TotalPrice,
-                    Tax = order.Tax,
-                    StatusTypeId = order.StatusTypeId,
-                    DateModified = DateTime.Now,
-                    UserModified = "Admin",
-                    UserEntered = currentOrder.UserEntered,
-                    DateEntered = currentOrder.DateEntered
-                };
-                _db.Entry(currentOrder).CurrentValues.SetValues(updateOrder);
+                Order updateOrder = GetOrderById(order.OrderId);
+
+                updateOrder.OrderId = order.OrderId;
+                updateOrder.CustomerId = order.CustomerId;
+                updateOrder.TotalPrice = order.TotalPrice;
+                updateOrder.Tax = order.Tax;
+                updateOrder.Discount = order.Discount;
+                updateOrder.StatusTypeId = order.StatusTypeId;
+                updateOrder.DateModified = DateTime.Now;
+                updateOrder.UserModified = "Admin";
+
+
+                _db.Update(updateOrder);
                 _db.SaveChanges();
             }
             return GetOrderById(order.OrderId);

@@ -63,5 +63,11 @@ namespace Backend.Controllers
         {
             return Ok(_mapper.Map<List<OrderItemReadDto>>(_repo.GetAllByOrderId(orderId)));
         }
+
+        [HttpPost("CreateListOfOrderItems")]
+        public ActionResult<List<OrderItemReadDto>> CreateListOfOrderItems([FromBody] List<OrderItemReadDto> orderItems)
+        {
+            return Ok(_mapper.Map<List<OrderItemReadDto>>(_repo.CreateListOfOrderItems(orderItems)));
+        }
     }
 }

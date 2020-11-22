@@ -15,7 +15,7 @@ namespace BackEnd.Models
         public long CustomerId { get; set; }
         public decimal TotalPrice { get; set; }
         public Nullable<decimal> Tax { get; set; }
-        public Nullable<decimal> Disount { get; set; }
+        public Nullable<decimal> Discount { get; set; }
         public long StatusTypeId { get; set; }
         public DateTime DateEntered { get; set; }
         public string UserEntered { get; set; }

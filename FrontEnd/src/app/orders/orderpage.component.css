@@ -1,0 +1,43 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+  
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+  
+}
+
+.btn-group .button {
+    background-color: #ede7df; /* Green */
+    border: none;
+    color: #202044;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: small;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .btn-group .button:hover {
+    background-color: #aaa6a1;
+  }
+
+  body{
+      height: 75%;
+      background-color: #41403f;
+  }
+  
+  Footer{
+      bottom: 0%;
+      position: fixed;
+  }

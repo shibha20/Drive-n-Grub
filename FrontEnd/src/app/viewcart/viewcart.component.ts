@@ -5,25 +5,32 @@ import { style } from '@angular/animations';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
-  selector: 'app-vieworder',
-  templateUrl: './vieworder.component.html',
-  styleUrls: ['./vieworder.component.css']
+  selector: 'app-viewcart',
+  templateUrl: './viewcart.component.html',
+  styleUrls: ['./viewcart.component.css']
 })
-export class ViewOrderComponent implements OnInit {
+export class ViewCartComponent implements OnInit {
     @Output() cancel: EventEmitter<any> = new EventEmitter();
     @Output() save: EventEmitter<any> = new EventEmitter();
     constructor(private http: HttpClient, private nav: Services.NavigationService) { }
-    orderItems: any;
-    order: any
-
+    itemsToOrder = [];
+    displayedColumns: string[] = ['ItemName', 'Price',  'Remove'];
 
     ngOnInit(): void {
-        this.http.get('http://localhost:5000/api/OrderItems/GetAllByOrderId/' + this.order.orderId).subscribe(x => {
-            this.orderItems = x;
-          });
     }
 
     Cancel(){
         this.cancel.emit();
+    }
+
+    Save(){
+        this.save.emit(this.itemsToOrder);
+    }
+
+    Remove(x: any)
+    {
+        var y = this.itemsToOrder.filter(q => q.itemId != x.itemId);
+        this.itemsToOrder = [];
+        this.itemsToOrder = y;
     }
 }

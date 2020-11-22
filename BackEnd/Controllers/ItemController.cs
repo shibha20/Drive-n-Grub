@@ -58,5 +58,12 @@ namespace Backend.Controllers
         {
             return _repo.DeleteItem(itemId);
         }
+
+        //Get api/Items/GetItemByItemTypeId/{itemTypeId}
+        [HttpGet("GetItemByItemTypeId/{itemTypeId}")]
+        public ActionResult<IEnumerable<ItemReadDto>> GetItemByItemTypeId(long itemTypeId)
+        {
+            return Ok(_mapper.Map<IEnumerable<ItemReadDto>>(_repo.GetItemByItemTypeId(itemTypeId)));
+        }
     }
 }
